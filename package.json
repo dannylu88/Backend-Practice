@@ -1,0 +1,23 @@
+{
+  "name": "backend-practice",
+  "version": "1.0.0",
+  "description": "This is a practice of backend, includes database, node.js, mongoDB,etc",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannylu88/Backend-Practice.git"
+  },
+  "author": "Danny Lu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannylu88/Backend-Practice/issues"
+  },
+  "homepage": "https://github.com/dannylu88/Backend-Practice#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
