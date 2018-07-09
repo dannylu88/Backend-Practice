@@ -4,6 +4,13 @@ var path = require('path');
 
 var app = express();
 
+var logger = function(request, response, next){
+ console.log('logging...');
+ next();
+};
+
+app.use(logger);
+
 app.get('/', function(request, response){
   response.send('hello world');
 });
