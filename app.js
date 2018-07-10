@@ -26,11 +26,38 @@ app.use(bodyParser.urlencoded({extended:false}));
      //commented out for now because I want to play on the backend, not front end yet
 // app.use(express.static(path.join(__dirname,'public')))
 
+var users = [
+  {
+  	firstName:'Danny',
+  	lastName:'Lu',
+  	email:'dannylu8@google.com'
+  },
+  {
+  	firstName:'Travis',
+  	lastName:'Hang',
+  	email:'travis@google.com'
+  }
 
+];
+
+app.post('/users/add', function(request, response){
+  console.log('FORM Submitted');
+
+  var newUser = {
+  	firstName: request.body.firstName,
+  	lastName: request.body.lastName,
+  	email: request.body.email
+  };
+
+  console.log(newUser);
+});
 
 
 app.get('/', function(request, response){
-  response.render('index');
+  response.render('index',{
+  	title:'customers',
+  	users:users
+  });
 });
 
 

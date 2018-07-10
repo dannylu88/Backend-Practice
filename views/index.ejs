@@ -1,1 +1,25 @@
-<h5>Hello From index.ejs</h5>
+<h5><%= title %></h5>
+<h1>Add Customer</h1>
+<form method='POST' action = '/users/add'> 
+<label>First Name</label>
+<br>
+<input type = 'text' name = 'firstName'>
+<br>
+<label>Last Name</label>
+<br>
+<input type = 'text' name = 'lastName'>
+<br>
+<label>E-mail</label>
+<br>
+<input type = 'text' name = 'email'>
+<br>
+<input type = 'submit' value = 'Submit'>
+
+</form>
+
+
+<h5><% users.forEach(function(item){ %>
+	<li><%= item.firstName %></li>
+<% }) %>
+
+</h5>
