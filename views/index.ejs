@@ -1,5 +1,12 @@
 <h5><%= title %></h5>
 <h1>Add Customer</h1>
+
+<%  if(errors){  %>
+     <%  errors.forEach((error) => {  %>
+         <li> <%= error.msg  %> </li>
+   <%  });  %>
+<% } %>
+
 <form method='POST' action = '/users/add'> 
 <label>First Name</label>
 <br>
@@ -19,7 +26,9 @@
 
 
 <h5><% users.forEach(function(item){ %>
-	<li><%= item.firstName %></li>
+	<li><%= item.firstName  %>
+	<%= item.lastName %></li>
+	<li><%= item.email %></li>
 <% }) %>
 
 </h5>
