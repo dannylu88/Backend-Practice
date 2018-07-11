@@ -9,6 +9,8 @@ const { check } = require('express-validator/check');
 var mongojs = require('mongojs');
 var db = mongojs('customerapp', ['users']);
 
+var ObjectId = mongojs.ObjectId;
+
 var app = express();
 /*
 var logger = function(request, response, next){
@@ -43,21 +45,23 @@ app.use(function(request, response, next){
 //Set Static path for public folder, like css file, jQuery
 //also I created a public folder, that's where I want to put some client stuff inside
      //commented out for now because I want to play on the backend, not front end yet
-// app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname,'/public')));
+console.log('dir',path.join(__dirname,'/public'))
 
-var users = [
-  {
-  	firstName:'Danny',
-  	lastName:'Lu',
-  	email:'dannylu8@google.com'
-  },
-  {
-  	firstName:'Travis',
-  	lastName:'Hang',
-  	email:'travis@google.com'
-  }
+//dont need this anymore, we already retrieve data from database
+// var users = [
+//   {
+//   	firstName:'Danny',
+//   	lastName:'Lu',
+//   	email:'dannylu8@google.com'
+//   },
+//   {
+//   	firstName:'Travis',
+//   	lastName:'Hang',
+//   	email:'travis@google.com'
+//   }
 
-];
+// ];
 
 app.get('/', function(request, response){
 	db.users.find(function (err, docs) {
@@ -115,7 +119,15 @@ app.post('/users/add', function(request, response){
   console.log(newUser);
 });
 
-
+app.delete('/users/delete/:id', function(request, response){
+	console.log('request params',request.params.id);
+	db.users.remove({_id: ObjectId(request.params.id)}, function(err, result){
+		if(err){
+			console.log(err);
+		}
+		response.redirect('/');
+	});
+});
 
 
 

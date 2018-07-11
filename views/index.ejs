@@ -1,3 +1,5 @@
+<%include partial/header %>
+
 <h5><%= title %></h5>
 <h1>Add Customer</h1>
 
@@ -27,8 +29,11 @@
 
 <h5><% users.forEach(function(item){ %>
 	<li><%= item.firstName  %>
-	<%= item.lastName %></li>
-	<li><%= item.email %></li>
+	<%= item.lastName %>
+	<br>
+	<%= item.email %> - <a href='#' 
+	class='deleteUser' data-id='<%=users._id%>'>Delete</a></li>
 <% }) %>
 
 </h5>
+<%include partial/footer %>
